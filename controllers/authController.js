@@ -1,12 +1,22 @@
 import User from '../models/User.js';
+import { StatusCodes } from 'http-status-codes';
+
+class CustomAPIError extends Error {
+  constructor(message) {
+    super(message);
+    this.statusCode = StatusCodes.BAD_REQUEST;
+  }
+}
 
 const register = async (req, res) => {
-  try {
-    const user = await User.create(req.body);
-    res.status(201).json({ user });
-  } catch (error) {
-    res.status(500).json({ msg: 'there was an error' });
+  const { name, email, password } = req.body;
+
+  if (!name || !email || !password) {
+    throw new CustomAPIError('Please provide all values');
   }
+
+  const user = await User.create(name, email, password);
+  res.status(StatusCodes.CREATED).json({ user });
 };
 
 const login = (req, res) => {
