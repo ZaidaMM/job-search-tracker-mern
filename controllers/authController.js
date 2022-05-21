@@ -13,15 +13,15 @@ const register = async (req, res) => {
   if (userAlreadyExists) {
     throw new BadRequestError('Email already in use');
   }
-  const user = await User.create(name, email, password);
-  res.status(StatusCodes.OK).json({ user });
+  const user = await User.create({ name, email, password });
+  res.status(StatusCodes.CREATED).json({ user });
 };
 
-const login = (req, res) => {
+const login = async (req, res) => {
   res.send('Login');
 };
 
-const updateUser = (req, res) => {
+const updateUser = async (req, res) => {
   res.send('Update user');
 };
 
