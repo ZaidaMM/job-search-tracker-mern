@@ -24,6 +24,35 @@ const reducer = (state, action) => {
       alertText: '',
     };
   }
+
+  if (action.type === REGISTER_USER_BEGIN) {
+    return { ...state, isLoading: true };
+  }
+
+  if (action.type === REGISTER_USER_SUCCESS) {
+    return {
+      ...state,
+      user: action.payload.user,
+      token: action.payload.token,
+      userLocation: action.payload.userLocation,
+      jobLocation: action.payload.jobLocation,
+      isLoading: false,
+      showAlert: true,
+      alertType: 'success',
+      alertText: 'User created! Redirecting...',
+    };
+  }
+
+  if (action.type === REGISTER_USER_ERROR) {
+    return {
+      ...state,
+      isLoading: false,
+      showAlert: true,
+      alertType: 'danger',
+      alertText: action.payload.msg,
+    };
+  }
+
   throw new Error(`No such action: ${action.type}`);
 };
 
