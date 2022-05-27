@@ -16,6 +16,7 @@ const AddJob = () => {
     statusOptions,
     status,
     handleChange,
+    clearValues,
   } = useAppContext();
 
   const handleSubmit = (e) => {
@@ -61,19 +62,18 @@ const AddJob = () => {
             handleChange={handleJobInput}
           />
           <FormRowSelect
+            name='status'
+            value={status}
+            handleChange={handleJobInput}
+            list={statusOptions}
+          />
+          <FormRowSelect
             labelText='Type'
             name='jobType'
             value={jobType}
             handleChange={handleJobInput}
             list={jobTypeOptions}
           />
-          <FormRowSelect
-            name='status'
-            value={status}
-            handleChange={handleJobInput}
-            list={statusOptions}
-          />
-
           <div className='btn-container'>
             <button
               type='submit'
@@ -81,6 +81,15 @@ const AddJob = () => {
               onClick={handleSubmit}
             >
               Submit
+            </button>
+            <button
+              className='btn btn-block clear-btn'
+              onClick={(e) => {
+                e.preventDefault();
+                clearValues();
+              }}
+            >
+              Clear
             </button>
           </div>
         </div>
