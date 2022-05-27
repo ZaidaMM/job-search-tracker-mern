@@ -6,6 +6,7 @@ const AddJob = () => {
   const {
     showAlert,
     displayAlert,
+    alertText,
     isEditing,
     editJobId,
     position,
@@ -17,23 +18,26 @@ const AddJob = () => {
     status,
     handleChange,
     clearValues,
+    createJob,
+    isLoading,
   } = useAppContext();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
     if (!position || !company || !jobLocation) {
       displayAlert();
       return;
     }
-    console.log('job created');
+    if (isEditing) {
+      return;
+    }
+    createJob();
   };
 
   const handleJobInput = (e) => {
-    handleChange({
-      name: e.target.name,
-      value: e.target.value,
-    });
+    const name = e.target.name;
+    const value = e.target.value;
+    handleChange({ name, value });
   };
 
   return (
@@ -79,6 +83,7 @@ const AddJob = () => {
               type='submit'
               className='btn btn-block submit-btn'
               onClick={handleSubmit}
+              disabled={isLoading}
             >
               Submit
             </button>
