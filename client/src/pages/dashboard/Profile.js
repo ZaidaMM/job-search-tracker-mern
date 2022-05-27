@@ -12,14 +12,18 @@ const Profile = () => {
   const [email, setEmail] = useState(user?.email);
   const [location, setLocation] = useState(user?.location);
 
-  const onSubmit = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('updated');
+    // if (!name || !email || !lastName || !location) {
+    //   displayAlert();
+    //   return;
+    // }
+    updateUser({ name, email, lastName, location });
   };
 
   return (
     <Wrapper>
-      <form className='form' onSubmit={onSubmit}>
+      <form className='form' onSubmit={handleSubmit}>
         <h3>Profile</h3>
         {showAlert && <Alert />}
         <div className='form-center'>
