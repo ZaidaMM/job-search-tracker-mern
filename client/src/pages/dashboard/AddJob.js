@@ -15,6 +15,7 @@ const AddJob = () => {
     jobType,
     statusOptions,
     status,
+    handleChange,
   } = useAppContext();
 
   const handleSubmit = (e) => {
@@ -28,10 +29,10 @@ const AddJob = () => {
   };
 
   const handleJobInput = (e) => {
-    const name = e.target.name;
-    const value = e.target.value;
-
-    console.log(`${name}:${value}`);
+    handleChange({
+      name: e.target.name,
+      value: e.target.value,
+    });
   };
 
   return (
@@ -54,8 +55,8 @@ const AddJob = () => {
           />
           <FormRow
             type='text'
-            labelText='job location'
-            name='joblocation'
+            labelText='location'
+            name='jobLocation'
             value={jobLocation}
             handleChange={handleJobInput}
           />
