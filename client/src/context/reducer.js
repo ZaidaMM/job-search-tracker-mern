@@ -23,7 +23,7 @@ import {
   GET_JOBS_BEGIN,
   GET_JOBS_SUCCESS,
   SET_EDIT_JOB,
-  DELETE_JOB,
+  DELETE_JOB_BEGIN,
 } from './actions';
 import { initialState } from './appContext';
 
@@ -255,11 +255,12 @@ const reducer = (state, action) => {
       status,
     };
   }
-  // if (action.type === DELETE_JOB) {
-  //   return {
-  //     ...state,
-  //   };
-  // }
+  if (action.type === DELETE_JOB_BEGIN) {
+    return {
+      ...state,
+      isLoading: true,
+    };
+  }
 
   throw new Error(`No such action: ${action.type}`);
 };
