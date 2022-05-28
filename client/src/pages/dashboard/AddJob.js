@@ -8,6 +8,7 @@ const AddJob = () => {
     displayAlert,
     alertText,
     isEditing,
+    editJob,
     editJobId,
     position,
     company,
@@ -29,6 +30,7 @@ const AddJob = () => {
       return;
     }
     if (isEditing) {
+      editJob();
       return;
     }
     createJob();

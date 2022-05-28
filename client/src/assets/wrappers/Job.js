@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
 
 const Wrapper = styled.article`
   background: var(--white);
@@ -43,14 +43,14 @@ const Wrapper = styled.article`
   }
   .pending {
     background: #fcefc7;
-    color: #e9b949;
+    color: var(--grey-700);
   }
   .interview {
     background: #e0e8f9;
-    color: #647acb;
+    color: var(--grey-700);
   }
   .declined {
-    color: #d66a6a;
+    color: var(--grey-700);
     background: #ffeeee;
   }
   .content {
@@ -100,6 +100,6 @@ const Wrapper = styled.article`
   &:hover .actions {
     visibility: visible;
   }
-`
+`;
 
-export default Wrapper
+export default Wrapper;

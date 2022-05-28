@@ -1,8 +1,9 @@
 import moment from 'moment';
 import { useAppContext } from '../context/appContext';
 import { Link } from 'react-router-dom';
+import { FaLocationArrow, FaBriefcase, FaCalendarAlt } from 'react-icons/fa';
 import Wrapper from '../assets/wrappers/Job';
-import { JobInfo } from './JobInfo';
+import { JobInfo } from './index';
 
 const Job = ({
   company,
@@ -11,7 +12,7 @@ const Job = ({
   position,
   jobLocation,
   status,
-  jobType,
+  type,
 }) => {
   const { setEditJob, deleteJob } = useAppContext();
 
@@ -28,19 +29,25 @@ const Job = ({
         </div>
       </header>
       <div className='content'>
-        <h3>CONTENT</h3>
-        <h5>{date}</h5>
+        <div className='content-center'>
+          <JobInfo icon={<FaLocationArrow />} text={jobLocation} />
+          <JobInfo icon={<FaCalendarAlt />} text={date} />
+          <JobInfo icon={<FaBriefcase />} text={type} />
+          <div className={`status ${status}`}>{status}</div>
+        </div>
         <footer>
-          <Link
-            to='/add-job'
-            className='btn edit-btn'
-            onClick={() => setEditJob(_id)}
-          >
-            Edit
-          </Link>
-          <button className='btn delete-btn' onClick={() => deleteJob(_id)}>
-            Delete
-          </button>
+          <div className='actions'>
+            <Link
+              to='/add-job'
+              className='btn edit-btn'
+              onClick={() => setEditJob(_id)}
+            >
+              Edit
+            </Link>
+            <button className='btn delete-btn' onClick={() => deleteJob(_id)}>
+              Delete
+            </button>
+          </div>
         </footer>
       </div>
     </Wrapper>
