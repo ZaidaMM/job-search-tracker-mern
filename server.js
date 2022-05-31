@@ -9,6 +9,10 @@ import { dirname } from 'path';
 import { fileURLToPath } from 'url';
 import path from 'path';
 
+import helmet from 'helmet';
+import xss from 'xss-clean';
+import mongoSanitize from 'express-mongo-sanitize';
+
 // db and authenticate user
 import connectDB from './db/connect.js';
 
@@ -28,6 +32,9 @@ if (process.env.NODE_ENV !== 'production') {
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
 app.use(express.json());
+app.use(helmet());
+app.use(xss());
+app.use(mongoSanitize());
 
 app.use(express.static(path.resolve(__dirname, './client/build')));
 
