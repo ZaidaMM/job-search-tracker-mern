@@ -15,6 +15,7 @@ import StatItem from './StatItem';
 import Loading from './Loading';
 import BarChart from './BarChart';
 import AreaChart from './AreaChart';
+import PageBtnContainer from './PageBtnContainer';
 
 export {
   Logo,
@@ -34,4 +35,5 @@ export {
   Loading,
   BarChart,
   AreaChart,
+  PageBtnContainer,
 };

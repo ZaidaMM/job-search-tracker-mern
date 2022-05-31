@@ -1,7 +1,7 @@
 import { useAppContext } from '../context/appContext';
 import { useEffect } from 'react';
 import Wrapper from '../assets/wrappers/JobsContainer';
-import Job from './Job';
+import { Job, PageBtnContainer } from './index';
 import Loading from './Loading';
 
 function JobsContainer() {
@@ -14,6 +14,7 @@ function JobsContainer() {
     search,
     searchStatus,
     searchType,
+    numOfPages,
     sort,
   } = useAppContext();
   useEffect(() => {
@@ -41,6 +42,7 @@ function JobsContainer() {
           return <Job key={job._id} {...job} />;
         })}
       </div>
+      {numOfPages > 1 && <PageBtnContainer />}
     </Wrapper>
   );
 }
