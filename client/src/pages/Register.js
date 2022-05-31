@@ -53,7 +53,7 @@ function Register() {
         alertText: 'User created! Redirecting...',
       });
     }
-    console.log(values);
+    // console.log(values);
   };
 
   useEffect(() => {

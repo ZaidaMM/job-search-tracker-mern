@@ -10,6 +10,7 @@ const Stats = () => {
   const { showStats, isLoading, monthlyApplications } = useAppContext();
   useEffect(() => {
     showStats();
+    // eslint-disable-next-line
   }, []);
 
   if (isLoading) {
